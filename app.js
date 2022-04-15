@@ -23,13 +23,18 @@ server.listen(3000, error => {
 
 //|+| testing GET
 server.get('/', (req, res) => {
-  res.send('Server online');
+  res.status(200).send('Server online');
 });
 
 //|+| testing POST
 server.post('/personal_message', (req, res) => {
   const { name, verb } = req.body;
-  res.send(`${name} is ${verb}...`);
+  res.status(200).send(`${name} is ${verb}...`);
+});
+
+//|+| testing RUTE UNKONWN
+server.get('*', (req, res) => {
+  res.status(400).send('Unkonwn rute');
 });
 
 //|+|------------------------------------------
